@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="converter-container">
+      <h2>Currency Converter</h2>
+
+      <form>
+        <div class="input-group">
+          <input type="number" id="amount" placeholder="Enter amount" />
+        </div>
+        <div class="dropdowns">
+          <div class="dropdown">
+            <img id="from-flag" src="https://flagsapi.com/US/flat/64.png" alt="flag" />
+            <select name="from" id="from-currency">
+              <!-- <option value="USD" data-flag="flags/us.png">USD - US Dollar</option>
+                    <option value="EUR" data-flag="flags/eu.png">EUR - Euro</option>
+                    <option value="INR" data-flag="flags/in.png">INR - Indian Rupee</option> -->
+            </select>
+          </div>
+          <span>to</span>
+          <div class="dropdown">
+            <img id="to-flag" src="https://flagsapi.com/IN/flat/64.png" alt="flag" />
+            <select name="to" id="to-currency"></select>
+          </div>
+        </div>
+        <button id="convert-btn">Convert</button>
+        <div class="result">
+          <p id="converted-amount">Converted Amount: --</p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function updateFlag(type) {
+        const selectElement = document.getElementById(`${type}-currency`);
+        const selectedOption =
+          selectElement.options[selectElement.selectedIndex];
+        const flagUrl = selectedOption.getAttribute("data-flag");
+        document.getElementById(`${type}-flag`).src = flagUrl;
+      }
+    </script>
+
+    <script type="module" src="App.js"></script>
+    <script src="codes.js"></script>
+  </body>
+</html>
